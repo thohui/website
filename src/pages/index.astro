@@ -1,9 +1,8 @@
 ---
-import { AboutMe } from "@/components/about-me";
+import AboutMe from "@/components/AboutMe.astro";
+import Sidemenu from "@/components/Sidemenu.astro";
+import Socials from "@/components/Socials.astro";
 import Layout from "../layouts/Layout.astro";
-import { Sidemenu } from "@/components/sidemenu";
-import { Socials } from "@/components/socials";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 ---
 
 <Layout>
@@ -11,10 +10,9 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
     <div
       class="grid grid-cols-[repeat(6,_200px)] auto-rows-[100px] gap-4 justify-center"
     >
-      <Sidemenu client:load />
-      <AboutMe client:load />
-      <ThemeSwitcher />
-      <Socials client:load />
+      <Sidemenu />
+      <AboutMe />
+      <Socials />
     </div>
   </div>
 </Layout>
