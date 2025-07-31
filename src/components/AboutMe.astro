@@ -11,13 +11,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card.tsx";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 ---
 
 <Card className="dark:bg-gray-800 shadow-md row-span-3 col-span-5">
   <CardHeader>
-    <CardTitle>About me</CardTitle>
+    <div class="flex justify-between items-center">
+      <CardTitle>About me</CardTitle>
+    </div>
   </CardHeader>
   <CardContent>
-    <p>todo</p>
+    <p class="leading-relaxed">
+      I am a 24-year-old software engineer with a passion for full-stack
+      development and a keen interest in low-level concepts. Currently, I work
+      at <a
+        href="https://recastsoftware.com"
+        target="_blank"
+        class="underline text-blue-400">Recast Software</a
+      >, where I apply my skills to create innovative solutions. Outside of
+      work, I enjoy exploring philosophy, immersing myself in nature, cycling,
+      reading, and tinkering with various projects.
+    </p>
   </CardContent>
 </Card>

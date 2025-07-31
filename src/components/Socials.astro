@@ -14,9 +14,21 @@ import {
 } from "@/components/ui/card.tsx";
 ---
 
-<Card className="dark:bg-gray-800 shadow-md col-auto row-span-1">
+<Card className="dark:bg-gray-800 shadow-md row-span-1">
   <CardContent className="flex flex-row gap-3 items-center">
-    <Image src={githubIcon} alt="GitHub" class="w-8 h-8" />
-    <Image src={linkedinIcon} alt="LinkedIn" class="w-8 h-8" />
+    <a
+      href="https://www.github.com/thohui"
+      target="_blank"
+      class="cursor-pointer"
+    >
+      <Image src={githubIcon} alt="GitHub" class="w-8 h-8" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/thomas-huisman-2aba0b24a/"
+      class="cursor-pointer"
+      target="_blank"
+    >
+      <Image src={linkedinIcon} alt="LinkedIn" class="w-8 h-8" />
+    </a>
   </CardContent>
 </Card>
