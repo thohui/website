@@ -1,0 +1,72 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="/" class={currentPath === "/" ? "active" : ""}>about</a></li>
+      <li>
+        <a href="/contact" class={currentPath === "/contact" ? "active" : ""}
+          >contact</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    margin-bottom: 3rem;
+  }
+
+  .prompt {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .user {
+    color: #228b22;
+  }
+
+  .separator {
+    color: var(--text-color);
+  }
+
+  .path {
+    color: #4682b4;
+  }
+
+  .prompt-symbol {
+    color: var(--text-color);
+    margin-right: 0.5rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid transparent;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    border: 1px solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+  }
+
+  @media (max-width: 600px) {
+    .nav-links {
+      gap: 1rem;
+    }
+  }
+</style>

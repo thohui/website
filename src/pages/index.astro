@@ -1,18 +1,82 @@
 ---
-import AboutMe from "@/components/AboutMe.astro";
-import Sidemenu from "@/components/Sidemenu.astro";
-import Socials from "@/components/Socials.astro";
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-  <div class="mx-auto max-w-screen-lg px-4 pt-4">
-    <div
-      class="grid grid-cols-[repeat(6,_200px)] auto-rows-[100px] gap-4 justify-center"
-    >
-      <Sidemenu />
-      <AboutMe />
-      <Socials />
-    </div>
-  </div>
+  <Header />
+
+  <main>
+    <section class="intro">
+      <h1>Thomas Huisman</h1>
+      <p class="subtitle">Software Engineer</p>
+    </section>
+
+    <section class="about">
+      <h2>who am i</h2>
+      <p>
+        I'm a software engineer passionate about creating clean, functional
+        websites and applications. I enjoy working with modern technologies
+        while keeping things simple and accessible.
+      </p>
+      <p>
+        When I'm not coding, you can find me reading, exploring the outdoors,
+        going to concerts or tinkering with side projects.
+      </p>
+    </section>
+
+    <section class="skills">
+      <h2>skills</h2>
+      <ul class="skills-list">
+        <li>JavaScript / TypeScript</li>
+        <li>React / Astro</li>
+        <li>HTML / CSS</li>
+        <li>Rust / Go</li>
+        <li>Git / GitHub / Azure Devops</li>
+        <li>PostgreSQL / MongoDB</li>
+        <li>Linux / Docker</li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
 </Layout>
+
+<style>
+  .intro {
+    margin-bottom: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+    margin-left: 0;
+  }
+
+  .skills-list li {
+    list-style: none;
+    padding: 0.25rem 0;
+  }
+
+  .skills-list li:before {
+    content: "• ";
+    color: var(--text-secondary);
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .skills-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
