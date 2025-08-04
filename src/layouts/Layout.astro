@@ -1,3 +1,11 @@
+---
+import {
+  GoogleTagmanager,
+  GoogleTagmanagerNoscript,
+  SiteVerification,
+} from "@digi4care/astro-google-tagmanager";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,11 +15,12 @@
     <meta name="description" content="Software Engineer" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
     <title>Thomas Huisman</title>
+    <GoogleTagmanager id="G-YVKY51MGZL" />
   </head>
-  <body>
-    <slot />
-  </body>
 </html>
+<body>
+  <slot />
+</body>
 
 <style is:global>
   :root {
