@@ -1,7 +1,8 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const isCurrentPath = (path: string) => path === currentPath || path + "/" === currentPath;
+const isCurrentPath = (path: string) =>
+  path === currentPath || path + "/" === currentPath;
 ---
 
 <header>
@@ -9,7 +10,8 @@ const isCurrentPath = (path: string) => path === currentPath || path + "/" === c
     <ul class="nav-links">
       <li><a href="/" class={isCurrentPath("/") ? "active" : ""}>about</a></li>
       <li>
-        <a href="/contact" class={isCurrentPath("/contact") ? "active" : ""}>contact</a
+        <a href="/contact" class={isCurrentPath("/contact") ? "active" : ""}
+          >contact</a
         >
       </li>
     </ul>
