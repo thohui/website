@@ -10,6 +10,6 @@
   },
   "dependencies": {
     "@digi4care/astro-google-tagmanager": "^1.6.0",
-    "astro": "^5.12.8"
+    "astro": "^5.13.1"
   }
 }
