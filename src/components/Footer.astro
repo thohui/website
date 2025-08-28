@@ -1,0 +1,49 @@
+---
+const date = new Date();
+
+const currentYear = date.getFullYear();
+
+const monthMap: Record<number, string> = {
+  0: "january",
+  1: "february",
+  2: "march",
+  3: "april",
+  4: "may",
+  5: "june",
+  6: "july",
+  7: "august",
+  8: "september",
+  9: "oktober",
+  10: "november",
+  11: "december",
+};
+
+const currentMonth = monthMap[date.getMonth()] ?? "unknown";
+---
+
+<footer>
+  <div class="ascii-divider">***</div>
+  <div class="footer-text">last update: {currentMonth} {currentYear}</div>
+</footer>
+
+<style>
+  footer {
+    margin-top: 4rem;
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  .footer-text a {
+    color: var(--text-secondary);
+  }
+
+  .footer-text a:hover {
+    color: var(--bg-color);
+    background-color: var(--text-secondary);
+  }
+</style>

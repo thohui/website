@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <h1>contact</h1>
+  <section class="contact-info">
+    <p>
+      Feel free to reach out if you'd like to collaborate on a project, have a
+      question, or just want to say hello.
+    </p>
+
+    <div class="contact-methods">
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>Email:</strong>
+          <a href="mailto:contact@thohui.com">contact@thohui.com</a>
+        </div>
+
+        <div class="contact-item">
+          <strong>GitHub:</strong>
+          <a href="https://github.com/thohui" target="_blank" rel="noopener"
+            >github.com/thohui</a
+          >
+        </div>
+
+        <div class="contact-item">
+          <strong>LinkedIn:</strong>
+          <a
+            href="https://www.linkedin.com/in/thomas-huisman-2aba0b24a"
+            target="_blank"
+            rel="noopener">linkedin.com/in/thomas-huisman-2aba0b24a</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .contact-item strong {
+    min-width: 80px;
+    color: var(--text-secondary);
+  }
+
+  .contact-methods,
+  @media (max-width: 600px) {
+    .contact-item {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .contact-item strong {
+      min-width: auto;
+    }
+  }
+</style>
