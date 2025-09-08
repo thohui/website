@@ -14,14 +14,15 @@ import Footer from "@/components/Footer.astro";
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>Thomas Huisman</title>
   </head>
+
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
-<body>
-  <Header />
-  <main>
-    <slot />
-  </main>
-  <Footer />
-</body>
 
 <style is:global>
   :root {
@@ -29,7 +30,15 @@ import Footer from "@/components/Footer.astro";
     --text-color: #000000;
     --text-secondary: #666666;
     --border-color: #cccccc;
-    --accent-color: #000000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #181a1b;
+      --text-color: #e8e6e3;
+      --text-secondary: #a8a095;
+      --border-color: #8c8273;
+    }
   }
 
   * {
