@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import { getEntry, getCollection, render } from "astro:content";
+
+// Get the slug from the URL
+const { slug } = Astro.params;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("blog");
+  return posts.map((p) => ({
+    params: { slug: p.slug },
+  }));
+};
+
+const entry = await getEntry<"blog", string>("blog", slug as string);
+
+if (!entry) {
+  throw new Error(`Post not found: ${slug}`);
+}
+
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+---
+
+<Layout>
+  <article>
+    <h1>{entry.data.title}</h1>
+    <p><em>{entry.data.date.toDateString()}</em></p>
+    <Content />
+  </article>
+</Layout>
