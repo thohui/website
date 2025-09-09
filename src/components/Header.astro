@@ -1,6 +1,9 @@
 ---
 const currentPath = Astro.url.pathname;
 
+import Moon from "@/assets/moon.svg";
+import Sun from "@/assets/sun.svg";
+
 const isCurrentPath = (path: string) =>
   path === currentPath || path + "/" === currentPath;
 ---
@@ -15,20 +18,61 @@ const isCurrentPath = (path: string) =>
         >
       </li>
     </ul>
+    <button id="theme-btn">
+      <Moon class="moon" />
+      <Sun class="sun" />
+    </button>
   </nav>
 </header>
 
 <style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
   header {
     margin-bottom: 3rem;
   }
 
-  .separator {
+  #theme-btn {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
+    background-color: transparent;
     color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--text-color);
+    cursor: pointer;
   }
 
-  .path {
-    color: #4682b4;
+  #theme-btn > * {
+    grid-area: 1/1;
+  }
+
+  #theme-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sun {
+    opacity: 1;
+  }
+
+  .moon {
+    opacity: 0;
+  }
+
+  :root[data-theme="dark"] .sun {
+    opacity: 0;
+  }
+  :root[data-theme="dark"] .moon {
+    opacity: 1;
   }
 
   .nav-links {
@@ -58,3 +102,12 @@ const isCurrentPath = (path: string) =>
     }
   }
 </style>
+
+<script>
+  import { getTheme, setTheme } from "@/lib/theme";
+  const btn = document.getElementById("theme-btn");
+  btn?.addEventListener("click", () => {
+    const targetTheme = getTheme() === "dark" ? "light" : "dark";
+    setTheme(targetTheme);
+  });
+</script>

@@ -13,8 +13,30 @@ import Footer from "@/components/Footer.astro";
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>Thomas Huisman</title>
-  </head>
+    <script is:inline>
+      (function () {
+        var key = "theme";
+        var d = document.documentElement;
+        var stored = null;
 
+        try {
+          stored = localStorage.getItem(key);
+        } catch (e) {}
+
+        if (stored === "light" || stored === "dark") {
+          d.setAttribute("data-theme", stored);
+          d.style.colorScheme = stored;
+        } else {
+          // fallback to system preference
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          d.setAttribute("data-theme", prefersDark ? "dark" : "light");
+          d.style.colorScheme = prefersDark ? "dark" : "light";
+        }
+      })();
+    </script>
+  </head>
   <body>
     <Header />
     <main>
@@ -32,13 +54,11 @@ import Footer from "@/components/Footer.astro";
     --border-color: #cccccc;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-color: #181a1b;
-      --text-color: #e8e6e3;
-      --text-secondary: #a8a095;
-      --border-color: #8c8273;
-    }
+  :root[data-theme="dark"] {
+    --bg-color: #181a1b;
+    --text-color: #e8e6e3;
+    --text-secondary: #a8a095;
+    --border-color: #8c8273;
   }
 
   * {
