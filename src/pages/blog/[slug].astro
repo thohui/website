@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-const entry = await getEntry<"blog", string>("blog", slug as string);
+const entry = await getEntry("blog", slug as string);
 
 if (!entry) {
   throw new Error(`Post not found: ${slug}`);
