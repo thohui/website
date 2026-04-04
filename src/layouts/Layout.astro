@@ -29,7 +29,7 @@ import Footer from "@/components/Footer.astro";
         } else {
           // fallback to system preference
           var prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)"
+            "(prefers-color-scheme: dark)",
           ).matches;
           d.setAttribute("data-theme", prefersDark ? "dark" : "light");
           d.style.colorScheme = prefersDark ? "dark" : "light";
@@ -48,17 +48,17 @@ import Footer from "@/components/Footer.astro";
 
 <style is:global>
   :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --text-secondary: #666666;
-    --border-color: #cccccc;
-  }
-
-  :root[data-theme="dark"] {
     --bg-color: #181a1b;
     --text-color: #e8e6e3;
     --text-secondary: #a8a095;
     --border-color: #8c8273;
+  }
+
+  :root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --text-secondary: #666666;
+    --border-color: #cccccc;
   }
 
   * {
@@ -131,20 +131,6 @@ import Footer from "@/components/Footer.astro";
 
   li {
     margin-bottom: 0.5rem;
-  }
-
-  pre,
-  code {
-    font-family: inherit;
-    background-color: #f5f5f5;
-    padding: 0.25rem 0.5rem;
-    border-radius: 3px;
-  }
-
-  pre {
-    padding: 1rem;
-    overflow-x: auto;
-    margin-bottom: 1rem;
   }
 
   hr {
