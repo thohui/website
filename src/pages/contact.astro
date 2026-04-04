@@ -1,11 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-  <h1>contact</h1>
+  <h1 class="title">contact</h1>
   <section class="contact-info">
     <p>
       Feel free to reach out if you'd like to collaborate on a project, have a
@@ -42,6 +40,9 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <style>
+  .title {
+    color: var(--text-bright);
+  }
   .contact-grid {
     display: grid;
     gap: 1rem;
@@ -56,7 +57,7 @@ import Footer from "../components/Footer.astro";
 
   .contact-item strong {
     min-width: 80px;
-    color: var(--text-secondary);
+    color: var(--text);
   }
 
   .contact-methods,

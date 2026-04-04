@@ -1,0 +1,67 @@
+---
+import type { Project } from "@/lib/projects";
+
+type Props = Project;
+
+const { title, description, githubUrl, technologies } = Astro.props;
+---
+
+<div class="project">
+	<div class="project-top">
+		<span class="project-name">{title}</span>
+	</div>
+	<p class="project-description">{description}</p>
+	<div>
+		<span class="project-technologies">
+			{technologies.join(" · ")}
+		</span>
+		<a href={githubUrl} target="_blank" rel="noopener" class="project-link"
+			>GitHub</a
+		>
+	</div>
+</div>
+
+<style>
+	.project {
+		border: 1px solid var(--border);
+		padding: 1.25em 1.5em;
+		margin-bottom: 0.75em;
+		background: var(--bg);
+		transition: border-color 0.15s;
+	}
+
+	.project-top {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 0.5em;
+	}
+
+	.project-name {
+		font-weight: 700;
+		font-size: 0.875em;
+		color: var(--text-bright);
+	}
+
+	.project-description {
+		font-size: 0.8125em;
+		font-weight: 300;
+		color: var(--text);
+		line-height: 1.7;
+		margin-bottom: 0.75em;
+	}
+
+	.project-technologies {
+		font-size: 0.75em;
+		display: flex;
+		color: var(--text-dim);
+		gap: 0.5em;
+		flex-wrap: wrap;
+	}
+
+	.project-link {
+		font-size: 0.75em;
+		color: var(--text);
+		text-decoration: underline;
+	}
+</style>

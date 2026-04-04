@@ -23,7 +23,7 @@ const isCurrentPath = (path: string) =>
         >
       </li>
     </ul>
-    <button id="theme-btn">
+    <button id="theme-btn" aria-label="Toggle theme">
       <Moon class="moon" />
       <Sun class="sun" />
     </button>
@@ -31,46 +31,15 @@ const isCurrentPath = (path: string) =>
 </header>
 
 <style>
+  header {
+    margin-bottom: 3rem;
+  }
+
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-  }
-
-  header {
-    margin-bottom: 3rem;
-  }
-
-  #theme-btn {
-    width: 32px;
-    height: 32px;
-    display: grid;
-    place-items: center;
-    border: none;
-    background-color: transparent;
-    color: var(--text-color);
-    padding: 0.25rem 0.25rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid var(--text-color);
-    cursor: pointer;
-  }
-
-  #theme-btn > * {
-    grid-area: 1/1;
-  }
-
-  #theme-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .sun {
-    opacity: 1;
-  }
-
-  .moon {
-    opacity: 0;
   }
 
   :root[data-theme="dark"] .sun {
@@ -90,15 +59,49 @@ const isCurrentPath = (path: string) =>
 
   .nav-links a {
     text-decoration: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     border: 1px solid transparent;
+    background-color: transparent;
   }
 
-  .nav-links a:hover,
+  .nav-links a:hover {
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
   .nav-links a.active {
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--text-bright);
+    color: var(--text);
+  }
+
+  #theme-btn {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
     background-color: transparent;
-    color: var(--text-color);
+    color: var(--text);
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  #theme-btn > * {
+    grid-area: 1/1;
+  }
+
+  #theme-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sun {
+    opacity: 1;
+  }
+
+  .moon {
+    opacity: 0;
   }
 
   @media (max-width: 600px) {

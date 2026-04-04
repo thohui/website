@@ -22,7 +22,6 @@ const currentMonth = monthMap[date.getMonth()] ?? "unknown";
 ---
 
 <footer>
-  <div class="ascii-divider">***</div>
   <div class="footer-text">last update: {currentMonth} {currentYear}</div>
 </footer>
 
@@ -34,16 +33,16 @@ const currentMonth = monthMap[date.getMonth()] ?? "unknown";
 
   .footer-text {
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--text);
     margin-bottom: 0;
   }
 
   .footer-text a {
-    color: var(--text-secondary);
+    color: var(--text-dim);
   }
 
   .footer-text a:hover {
-    color: var(--bg-color);
-    background-color: var(--text-secondary);
+    color: var(--bg);
+    background-color: var(--text-dim);
   }
 </style>

@@ -12,6 +12,11 @@ import Footer from "@/components/Footer.astro";
     <meta name="description" content="Software Engineer" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
     <title>Thomas Huisman</title>
     <script is:inline>
       (function () {
@@ -48,17 +53,22 @@ import Footer from "@/components/Footer.astro";
 
 <style is:global>
   :root {
-    --bg-color: #181a1b;
-    --text-color: #e8e6e3;
-    --text-secondary: #a8a095;
-    --border-color: #8c8273;
+    --bg: #1a1c1e;
+    --text: #b8bcc2;
+    --text-bright: #dcdfe4;
+    --text-dim: #5c6370;
+    --border: #3a3f45;
+    --grid: #222528;
   }
 
   :root[data-theme="light"] {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --text-secondary: #666666;
-    --border-color: #cccccc;
+    --bg: #f4f4f2;
+    --bg-subtle: #eaeae8;
+    --text: #4a4e54;
+    --text-dim: #8b9099;
+    --text-bright: #1a1c1e;
+    --border: #d5d6d4;
+    --grid: #dddedd;
   }
 
   * {
@@ -68,10 +78,23 @@ import Footer from "@/components/Footer.astro";
   }
 
   html {
-    font-family: "Courier New", "Monaco", "Menlo", "Consolas", monospace;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.6;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: -1;
   }
 
   body {
@@ -112,14 +135,14 @@ import Footer from "@/components/Footer.astro";
   }
 
   a {
-    color: var(--text-color);
+    color: var(--text);
     text-decoration: underline;
     transition: all 0.2s ease;
   }
 
   a:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
+    background-color: var(--text);
+    color: var(--bg);
     text-decoration: none;
   }
 
@@ -135,14 +158,8 @@ import Footer from "@/components/Footer.astro";
 
   hr {
     border: none;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
     margin: 2rem 0;
-  }
-
-  .ascii-divider {
-    text-align: center;
-    margin: 2rem 0;
-    color: var(--text-secondary);
   }
 
   @media (max-width: 600px) {
