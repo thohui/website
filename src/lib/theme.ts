@@ -7,7 +7,7 @@ const root = document.documentElement;
 export function getTheme() {
 	const value = localStorage.getItem(THEME_KEY) === "dark" ? "dark" : "light";
 	if (!value) {
-		return "light";
+		return "dark";
 	}
 	return value;
 };
