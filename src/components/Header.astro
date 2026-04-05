@@ -116,6 +116,15 @@ const isCurrentPath = (path: string) =>
   const btn = document.getElementById("theme-btn");
   btn?.addEventListener("click", () => {
     const targetTheme = getTheme() === "dark" ? "light" : "dark";
-    setTheme(targetTheme);
+    const isViewTransitionSupported =
+      typeof document.startViewTransition === "function";
+
+    if (isViewTransitionSupported) {
+      document.startViewTransition(() => {
+        setTheme(targetTheme);
+      });
+    } else {
+      setTheme(targetTheme);
+    }
   });
 </script>

@@ -71,6 +71,13 @@ import Footer from "@/components/Footer.astro";
     --grid: #dddedd;
   }
 
+  /* theme transition animation */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+  }
+
   * {
     margin: 0;
     padding: 0;
