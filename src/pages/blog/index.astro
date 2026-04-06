@@ -2,20 +2,81 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data?.hidden)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout>
+  <div>
+    <h1>blog</h1>
+  </div>
   {
     posts.map((post) => (
-      <>
-        <h1>
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
-        </h1>
-        {post.data.description && <h2>{post.data.description}</h2>}
-      </>
+      <li class="post-list">
+        <ul class="post-item">
+          <a href={`/blog/${post.id}`}>
+            <div class="post-meta">
+              <span>{post.data.date.toDateString()}</span>
+            </div>
+            <h2 class="post-title">{post.data.title}</h2>
+            <p class="post-description">{post.data.description}</p>
+          </a>
+        </ul>
+      </li>
     ))
   }
 </Layout>
+
+<style>
+  li a {
+    text-decoration: none;
+  }
+
+  h1 {
+    color: var(--text-bright);
+  }
+  h2 {
+    color: var(--text-dim);
+    margin-top: 0.25em;
+    margin-bottom: 1.5em;
+  }
+
+  .post-list {
+    list-style: none;
+  }
+
+  .post-list:first-of-type {
+    border-top: 1px solid var(--border);
+  }
+
+  .post-item {
+    margin-left: 0;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-meta {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .post-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-bright);
+    transition: color 0.2s ease;
+    line-height: 1.5;
+  }
+
+  .post-description {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-top: 0.25rem;
+    line-height: 1.65;
+  }
+</style>
