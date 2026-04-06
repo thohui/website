@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { formatDate } from "@/lib/date";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
@@ -17,7 +18,7 @@ const posts = (await getCollection("blog"))
         <ul class="post-item">
           <a href={`/blog/${post.id}`}>
             <div class="post-meta">
-              <span>{post.data.date.toDateString()}</span>
+              <span>{formatDate(post.data.date)}</span>
             </div>
             <h2 class="post-title">{post.data.title}</h2>
             <p class="post-description">{post.data.description}</p>
