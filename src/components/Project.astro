@@ -3,23 +3,29 @@ import type { Project } from "@/lib/projects";
 
 type Props = Project;
 
-const { title, description, githubUrl, technologies } = Astro.props;
+const { title, description, url, technologies } = Astro.props;
 ---
 
-<div class="project">
-	<div class="project-top">
-		<span class="project-name">{title}</span>
+<a
+	class="project-overlay"
+	href={url}
+	target="_blank"
+	rel="noopener"
+	referrerpolicy="no-referrer"
+	aria-label="Link to project"
+>
+	<div class="project">
+		<div class="project-top">
+			<span class="project-name">{title}</span>
+		</div>
+		<p class="project-description">{description}</p>
+		<div>
+			<span class="project-technologies">
+				{technologies.join(" · ")}
+			</span>
+		</div>
 	</div>
-	<p class="project-description">{description}</p>
-	<div>
-		<span class="project-technologies">
-			{technologies.join(" · ")}
-		</span>
-		<a href={githubUrl} target="_blank" rel="noopener" class="project-link"
-			>GitHub</a
-		>
-	</div>
-</div>
+</a>
 
 <style>
 	.project {
@@ -28,6 +34,14 @@ const { title, description, githubUrl, technologies } = Astro.props;
 		margin-bottom: 0.75em;
 		background: var(--bg);
 		transition: border-color 0.15s;
+	}
+
+	.project:hover {
+		border-color: var(--text);
+	}
+
+	.project-overlay {
+		text-decoration: none;
 	}
 
 	.project-top {

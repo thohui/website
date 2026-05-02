@@ -1,5 +1,5 @@
 ---
-import { PROJECTS } from "@/lib/projects";
+import { ONGOING_PROJECTS } from "@/lib/projects";
 import Layout from "../layouts/Layout.astro";
 import Project from "@/components/Project.astro";
 ---
@@ -26,19 +26,20 @@ import Project from "@/components/Project.astro";
   <section class="projects">
     <h2 class="title">ongoing projects</h2>
     {
-      PROJECTS.map((project) => (
+      ONGOING_PROJECTS.map((project) => (
         <Project
           title={project.title}
           description={project.description}
-          githubUrl={project.githubUrl}
+          url={project.url}
           technologies={project.technologies}
         />
       ))
     }
     <p style="padding-top: 1em;">
-      For a more complete overview of my work, check out my github <a
+      For a more complete overview of my work, check out my github profile <a
         href="https://github.com/thohui"
         target="_blank"
+        aria-label="GitHub profile"
         rel="noopener">here</a
       >.
     </p>

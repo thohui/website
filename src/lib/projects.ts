@@ -1,22 +1,16 @@
 export interface Project {
 	title: string;
 	description: string;
-	githubUrl: string;
+	url: string;
 	technologies: string[];
 }
 
 
-export const PROJECTS: Project[] = [
+export const ONGOING_PROJECTS: Project[] = [
 	{
 		title: "ResoDNS",
-		description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		githubUrl: "https://github.com/thohui/reso-dns",
-		technologies: ["Rust", "Typescript", "React"],
+		description: "Self hostable DNS server with a focus on security and privacy.",
+		url: "https://github.com/thohui/reso-dns",
+		technologies: ["Rust", "Typescript", "React", "SQLite", "Docker"],
 	},
-	{
-		title: "Reacticulum",
-		description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		githubUrl: "https://github.com/reacticulum/reacticulum",
-		technologies: ["Typescript", "React"],
-	}
 ];
