@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { CONTACT_LINKS } from "@/lib/profile";
 ---
 
 <Layout>
@@ -12,28 +13,20 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="contact-methods">
       <div class="contact-grid">
-        <div class="contact-item">
-          <strong>Email:</strong>
-          <a href="mailto:thomas.huisman@outlook.com"
-            >thomas.huisman@outlook.com</a
-          >
-        </div>
-
-        <div class="contact-item">
-          <strong>GitHub:</strong>
-          <a href="https://github.com/thohui" target="_blank" rel="noopener"
-            >github.com/thohui</a
-          >
-        </div>
-
-        <div class="contact-item">
-          <strong>LinkedIn:</strong>
-          <a
-            href="https://www.linkedin.com/in/thomas-huisman-2aba0b24a"
-            target="_blank"
-            rel="noopener">linkedin.com/in/thomas-huisman-2aba0b24a</a
-          >
-        </div>
+        {
+          CONTACT_LINKS.map((link) => (
+            <div class="contact-item">
+              <strong>{link.label}:</strong>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener" : undefined}
+              >
+                {link.value}
+              </a>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
